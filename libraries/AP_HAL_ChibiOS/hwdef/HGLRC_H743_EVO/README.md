@@ -2,7 +2,7 @@
 
 The HGLRC H743 EVO is an STM32H743-based flight controller for FPV
 multirotors. It has dual IMUs, an analog OSD, a microSD slot, an on-board
-barometer and compass, CAN, and ten PWM outputs. It is produced by
+barometer, CAN, and ten PWM outputs. It is produced by
 [HGLRC](https://www.hglrc.com/).
 
 ## Where to Buy
@@ -22,9 +22,9 @@ Available from the [HGLRC flight controller store](https://www.hglrc.com/collect
 ## Features
 
 - STM32H743VIT6 microcontroller (480 MHz, 2 MiB flash)
-- ICM-42688-P (SPI1) and BMI270 (SPI4) IMUs
+- ICM-42688-P or LSM6DSV32X (SPI1), and BMI270 (SPI4) IMUs
 - DPS368 barometer (I2C2, supported by the DPS310 driver)
-- IST8310 compass (I2C2)
+- External compass support (I2C1)
 - AT7456E analog OSD (SPI2)
 - microSD card slot (SDMMC, 4-bit)
 - One CAN port (FDCAN1)
@@ -94,7 +94,7 @@ The default battery parameters are:
 
 ## I2C, Compass, and Barometer
 
-The on-board IST8310 compass is provided on I2C2, but due to potential interference it is usually disabled in favor of an external compass, typically as part of a GPS/Compass combination connected to I2C1. The DPS368 barometer is also connected to I2C2.
+This hardware revision has no on-board compass. External compasses are automatically detected on I2C1, typically as part of a GPS/Compass combination. I2C2 is reserved for the on-board DPS368 barometer; compass probing on this internal bus is disabled.
 
 ## OSD Support
 
